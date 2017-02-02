@@ -22,12 +22,12 @@ rl
 
         if (!isNaN(number)) {
             let sum = calculate(number);
-
-            console.log(`The sum of all integer number from 1 to ${number} is equal:`);
-            console.log(sum);
-
-            rl.prompt();
+            console.log(`The sum of all integer number from 1 to ${number} is equal: %d`, sum);
+        } else {
+            console.log('Incorrect number. Enter an integer number from 1 to 1e4. For example ' + Math.ceil(Math.random() * 1e4));
         }
+
+        rl.prompt();
     })
     .on('close', () => {
         "use strict";
@@ -35,13 +35,10 @@ rl
         process.exit(0);
     });
 
-
 function validate(number) {
     number = parseInt(number);
 
     if (isNaN(number) || number < 0 || number > 1e4) {
-        console.log('Incorrect number. Enter an integer number from 1 to 1e4. For example ' + Math.ceil(Math.random() * 1e4));
-        rl.prompt();
         return NaN;
     }
 
